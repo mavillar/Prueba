@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <items>
-  <item Text="File" NavigateUrl="#" />
-  <item Text="Edit" NavigateUrl="#" />
+  <item Text="Administracion" NavigateUrl="Default.aspx" />
+  <item Text="Sistema de Precios" NavigateUrl="#" />
   <item Text="View" NavigateUrl="#" />
   <item Text="Go" NavigateUrl="#" />
   <item Text="Tools" NavigateUrl="#" />
