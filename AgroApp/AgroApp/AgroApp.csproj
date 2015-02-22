@@ -92,9 +92,13 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterSuccess.aspx" />
     <Content Include="App_Data\Data.mdf" />
+    <Content Include="App_Data\Data_log.ldf">
+      <DependentUpon>Data.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\OutlookMenuTop.xml" />
     <Content Include="Calendar.aspx" />
-    <Content Include="Default.aspx" />
+    <Content Include="images\Logo-AgroExport_240x75.png" />
+    <Content Include="Inicio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\announce.png" />
     <Content Include="images\AquaHeader.jpg" />
@@ -180,12 +184,12 @@
     <Compile Include="Calendar.aspx.designer.cs">
       <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

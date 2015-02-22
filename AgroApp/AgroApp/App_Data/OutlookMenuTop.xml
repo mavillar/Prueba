@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <items>
-  <item Text="Administracion" NavigateUrl="Default.aspx" />
-  <item Text="Sistema de Precios" NavigateUrl="#" />
-  <item Text="View" NavigateUrl="#" />
-  <item Text="Go" NavigateUrl="#" />
-  <item Text="Tools" NavigateUrl="#" />
-  <item Text="Actions" NavigateUrl="#" />
-  <item Text="Help" NavigateUrl="#" />
+  <item Text="Administracion" NavigateUrl="Inicio.aspx" />
+  <item Text="Sistema de Precios" NavigateUrl="Precios.aspx" />
+  <item Text="Gestor de Pedidos" NavigateUrl="Pedidos.aspx" />
+  <item Text="Informes" NavigateUrl="Informes.aspx" />
+  <item Text="Facturación" NavigateUrl="Facturas.aspx" />
+  <item Text="Gráficas" NavigateUrl="Graficas.aspx" />
+  <item Text="Configuración" NavigateUrl="Configuracion.aspx" />
+  <item Text="Ayuda Online" NavigateUrl="#" />
 </items>

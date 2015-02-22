@@ -1,5 +1,7 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="AgroApp.Root" %>
 
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxSplitter" TagPrefix="dx" %>
 
@@ -28,7 +30,7 @@
                     <dx:SplitterContentControl>
                         <div class="header">
                             <div class="title">
-                                <a href="/">Outlook</a>
+                                <dx:ASPxImage ID="logo" runat="server" ShowLoadingImage="false" ImageUrl="~/images/Logo-AgroExport_240x75.png"></dx:ASPxImage>
                             </div>
                             <div class="login">
                                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
@@ -54,6 +56,8 @@
                 </ContentCollection>
             </dx:SplitterPane>
             <dx:SplitterPane Name="MainPane" Separator-Visible="False">
+<Separator Visible="False"></Separator>
+
                 <PaneStyle CssClass="noborder"></PaneStyle>
                 <ContentCollection>
                     <dx:SplitterContentControl>
