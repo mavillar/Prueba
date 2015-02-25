@@ -5,10 +5,12 @@
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxSplitter" TagPrefix="dx" %>
 
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTreeView" tagprefix="dx" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>Outlook Project Template</title>
+    <title>AgroExport | Sistema de Control para la Exportación Hoortofrutícola</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
 </head>
@@ -56,17 +58,104 @@
                 </ContentCollection>
             </dx:SplitterPane>
             <dx:SplitterPane Name="MainPane" Separator-Visible="False">
-<Separator Visible="False"></Separator>
+                
+                <Separator Visible="False"></Separator>
 
                 <PaneStyle CssClass="noborder"></PaneStyle>
                 <ContentCollection>
                     <dx:SplitterContentControl>
-                        <asp:ContentPlaceHolder ID="Content" runat="server" />
+                        
+                        <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" FullscreenMode="True" Height="100%" Width="100%">
+                            <Panes>
+                                <dx:SplitterPane Name="SubMenu" Size="20%">
+                                    <ContentCollection>
+                                        <dx:SplitterContentControl runat="server">
+                                            <dx:ASPxTreeView ID="ASPxTreeView1" runat="server">
+                                                <Nodes>
+                                                    <dx:TreeViewNode NavigateUrl="~/vistas/Clients.aspx" Text="Clientes">
+                                                        <Image IconID="people_employee_16x16">
+                                                        </Image>
+                                                    </dx:TreeViewNode>
+                                                    <dx:TreeViewNode Text="Proveedores">
+                                                        <Image IconID="people_usergroup_16x16">
+                                                        </Image>
+                                                    </dx:TreeViewNode>
+                                                    <dx:TreeViewNode Text="Comerciales">
+                                                        <Image IconID="people_usergroup_16x16">
+                                                        </Image>
+                                                    </dx:TreeViewNode>
+                                                    <dx:TreeViewNode Text="Comisionistas">
+                                                        <Image IconID="data_summary_16x16">
+                                                        </Image>
+                                                    </dx:TreeViewNode>
+                                                    <dx:TreeViewNode Text="Familias">
+                                                        <Image IconID="find_findcustomers_16x16">
+                                                        </Image>
+                                                        <Nodes>
+                                                            <dx:TreeViewNode Text="Familia de productos">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Subfamilia de Productos">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Calibres / Producto">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Envases">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Tipos de Envase">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Confecciones">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Tipos de Confecciones">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Tipos de Palets">
+                                                            </dx:TreeViewNode>
+                                                        </Nodes>
+                                                    </dx:TreeViewNode>
+                                                    <dx:TreeViewNode Text="Productos">
+                                                        <Image IconID="grid_cards_16x16">
+                                                        </Image>
+                                                        <Nodes>
+                                                            <dx:TreeViewNode Text="Marcas">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Produtos">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Productos / Proveedor">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Produtos / Cliente">
+                                                            </dx:TreeViewNode>
+                                                        </Nodes>
+                                                    </dx:TreeViewNode>
+                                                    <dx:TreeViewNode Text="Transporte">
+                                                        <Image IconID="data_database_16x16">
+                                                        </Image>
+                                                        <Nodes>
+                                                            <dx:TreeViewNode Text="Centros de Carga">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Transportistas">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Precio Transporte / Destino">
+                                                            </dx:TreeViewNode>
+                                                        </Nodes>
+                                                    </dx:TreeViewNode>
+                                                </Nodes>
+                                            </dx:ASPxTreeView>
+                                        </dx:SplitterContentControl>
+                                    </ContentCollection>
+                                </dx:SplitterPane>
+                                <dx:SplitterPane Name="Contenido">
+                                    <ContentCollection>
+                                        <dx:SplitterContentControl runat="server">
+                                            <asp:ContentPlaceHolder ID="Content" runat="server" ></asp:ContentPlaceHolder>
+                                        </dx:SplitterContentControl>
+                                    </ContentCollection>
+                                </dx:SplitterPane>
+                            </Panes>
+                        </dx:ASPxSplitter>
                     </dx:SplitterContentControl>
                 </ContentCollection>
             </dx:SplitterPane>
         </Panes>
     </dx:ASPxSplitter>
+
     </form>
     <%-- DXCOMMENT: Configure a data source for the application's top menu --%>
     <asp:XmlDataSource ID="OutlookMenuTop" runat="server" DataFile="~/App_Data/OutlookMenuTop.xml" XPath="/items/*"></asp:XmlDataSource>

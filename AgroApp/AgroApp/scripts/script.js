@@ -33,6 +33,16 @@
 
     OnGetRowValues: function (values) {
         document.getElementById(OutlookController.MessageBodyName).innerHTML = values;
+    },
+
+    OnInit: function (s, e) {
+        var altura = document.documentElement.clientHeight;
+        grid.SetHeight(altura);
+    },
+
+    OnEndCallBack: function (s, e) {
+        var altura = document.documentElement.clientHeight;
+        grid.SetHeight(altura);
     }
 
 }

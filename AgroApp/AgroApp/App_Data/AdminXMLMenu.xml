@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <item Text="Administracion" NavigateUrl="Inicio.aspx" />
+  <item Text="Precios del Día" NavigateUrl="Precios.aspx" />
+  <item Text="Gestor de Pedidos" NavigateUrl="Pedidos.aspx" />
+  <item Text="Informes" NavigateUrl="Informes.aspx" />
+  <item Text="Facturación" NavigateUrl="Facturas.aspx" />
+  <item Text="Gráficas" NavigateUrl="Graficas.aspx" />
+  <item Text="Configuración" NavigateUrl="Configuracion.aspx" />
+  <item Text="Ayuda Online" NavigateUrl="#" />
+</items>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <items>
   <item Text="Administracion" NavigateUrl="Inicio.aspx" />
-  <item Text="Sistema de Precios" NavigateUrl="Precios.aspx" />
+  <item Text="Precios del Día" NavigateUrl="Precios.aspx" />
   <item Text="Gestor de Pedidos" NavigateUrl="Pedidos.aspx" />
   <item Text="Informes" NavigateUrl="Informes.aspx" />
   <item Text="Facturación" NavigateUrl="Facturas.aspx" />
