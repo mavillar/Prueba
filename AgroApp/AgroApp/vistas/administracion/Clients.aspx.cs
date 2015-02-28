@@ -30,9 +30,10 @@ namespace AgroApp
 
         protected void bNewDestino_Click(object sender, EventArgs e)
         {
-            //DestinosClienteDataSource.Insert();
-            texto.Text = "Insertando...";
-            texto.Text = "jander Clander"
+            DestinosClienteDataSource.Insert();
+            texto.Text = "Insertando: ";
+            gridClientes.ShowFilterControl();
+
         }
 
     }

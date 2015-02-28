@@ -12,14 +12,6 @@
 <%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPanel" tagprefix="dx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-     <script type="text/javascript">
-         var keyValue;
-         function OnClienteDetalle(element, key) {
-             fichaClienteCallbackPanel.setContentHtml("");
-             clientePopUp.ShowAtElement(element);
-             keyValue = key;
-         }
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
@@ -89,7 +81,7 @@
         <Templates>
             <EditForm>
                 <div style="padding:5px">
-                    <dx:ASPxPageControl ID="UsuarioPageControl" runat="server" Width="100%" Theme="Office2010Blue" LoadingPanelText="Cargando datos&hellip;" Font-Bold="True" Font-Size="Small" ForeColor="#003366" ShowLoadingPanelImage="False" ShowLoadingPanel="False" ActiveTabIndex="2">
+                    <dx:ASPxPageControl ID="UsuarioPageControl" runat="server" Width="100%" Theme="Office2010Blue" LoadingPanelText="Cargando datos&hellip;" Font-Bold="True" Font-Size="Small" ForeColor="#003366" ShowLoadingPanelImage="False" ShowLoadingPanel="False" ActiveTabIndex="1">
                         <TabPages>
                             <dx:TabPage Text="Información Básica">
                                 <ContentCollection>
@@ -153,23 +145,6 @@
                                                 <SettingsDataSecurity AllowEdit="False" AllowInsert="False" />
 
                                             </dx:ASPxGridView>
-                                            <asp:SqlDataSource ID="DestinosClienteDataSource" runat="server" 
-                                                                ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
-                                                                ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
-                                                                SelectCommand="SELECT dc.*, d.destino FROM AgroExport.destinos_cliente as dc INNER JOIN AgroExport.destinos as d ON d.ID=dc.destinoID WHERE dc.clienteID=@clienteID" 
-                                                                DeleteCommand="DELETE FROM AgroExport.destinos_cliente WHERE ID=@ID" 
-                                                                InsertCommand="INSERT INTO AgroExport.destinos_cliente (clienteID, destinoID) VALUES (@clienteID, @destinoID)">
-                                                    <DeleteParameters>
-                                                        <asp:Parameter Name="ID" />
-                                                    </DeleteParameters>
-                                                    <InsertParameters>
-                                                        <asp:Parameter Name="clienteID"    Type="Int64" DefaultValue="5" />
-                                                        <asp:ControlParameter Name="destinoID" ControlID="destinosCombo" PropertyName="SelectedItem.Value" />
-                                                    </InsertParameters>
-                                                    <SelectParameters>
-                                                        <asp:Parameter Name="clienteID"    Type="Int64" />
-                                                    </SelectParameters>
-                                                </asp:SqlDataSource>
                                             <br />
                                             <dx:ASPxCallbackPanel ID="DestinosCallbackPanel" runat="server" 
                                                                 LoadingPanelText="Actualizando...&amp;hellip;" 
@@ -230,7 +205,23 @@
             <asp:Parameter Name="cp"        Type="String" />
         </InsertParameters>
     </asp:SqlDataSource>
-    
+    <asp:SqlDataSource ID="DestinosClienteDataSource" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
+                    ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
+                    SelectCommand="SELECT dc.*, d.destino FROM AgroExport.destinos_cliente as dc INNER JOIN AgroExport.destinos as d ON d.ID=dc.destinoID WHERE dc.clienteID=@clienteID" 
+                    DeleteCommand="DELETE FROM AgroExport.destinos_cliente WHERE ID=@ID" 
+                    InsertCommand="INSERT INTO AgroExport.destinos_cliente (clienteID, destinoID) VALUES (@clienteID, @destinoID)">
+        <DeleteParameters>
+            <asp:Parameter Name="ID" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="clienteID"    Type="Int64" DefaultValue="5" />
+            <asp:ControlParameter Name="destinoID" ControlID="destinosCombo" PropertyName="SelectedValue" />
+        </InsertParameters>
+        <SelectParameters>
+            <asp:Parameter Name="clienteID"    Type="Int64" />
+        </SelectParameters>
+     </asp:SqlDataSource>
      <asp:SqlDataSource ID="DestinosDataSource" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
                     ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
