@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace AgroApp.clases
 {
-    public class Destinos
+    public class DestinosCliente
     {
 
         private int _destinoID;
+        private int _clienteID;
         private string _destino;
+
+        public DestinosCliente(int dID, int cID, string dest) {
+            
+            _destinoID = dID;
+            _clienteID = cID;
+            _destino = dest;
+
+        }
 
         public int destinoID {
             get {
@@ -18,6 +28,19 @@ namespace AgroApp.clases
 
             set {
                 _destinoID = value;
+            }
+        }
+
+        public int clienteID
+        {
+            get
+            {
+                return _clienteID;
+            }
+
+            set
+            {
+                _clienteID = value;
             }
         }
 

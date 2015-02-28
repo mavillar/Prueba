@@ -72,11 +72,11 @@
                                         <dx:SplitterContentControl runat="server">
                                             <dx:ASPxTreeView ID="ASPxTreeView1" runat="server">
                                                 <Nodes>
-                                                    <dx:TreeViewNode NavigateUrl="~/vistas/Clients.aspx" Text="Clientes">
+                                                    <dx:TreeViewNode NavigateUrl="~/vistas/administracion/Clients.aspx" Text="Clientes">
                                                         <Image IconID="people_employee_16x16">
                                                         </Image>
                                                     </dx:TreeViewNode>
-                                                    <dx:TreeViewNode Text="Proveedores">
+                                                    <dx:TreeViewNode Text="Proveedores" NavigateUrl="~/vistas/administracion/Proveedores.aspx">
                                                         <Image IconID="people_usergroup_16x16">
                                                         </Image>
                                                     </dx:TreeViewNode>

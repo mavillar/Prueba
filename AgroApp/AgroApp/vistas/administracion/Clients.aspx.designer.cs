@@ -13,24 +13,6 @@ namespace AgroApp {
     public partial class Clients {
         
         /// <summary>
-        /// Control clientePopUp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl clientePopUp;
-        
-        /// <summary>
-        /// Control fichaClienteCallbackPanel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel fichaClienteCallbackPanel;
-        
-        /// <summary>
         /// Control gridClientes.
         /// </summary>
         /// <remarks>
@@ -49,15 +31,6 @@ namespace AgroApp {
         protected global::System.Web.UI.WebControls.SqlDataSource ClientesDataSource;
         
         /// <summary>
-        /// Control EnviosDataSource.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource EnviosDataSource;
-        
-        /// <summary>
         /// Control DestinosDataSource.
         /// </summary>
         /// <remarks>
@@ -74,5 +47,14 @@ namespace AgroApp {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox texto;
+        
+        /// <summary>
+        /// Control tMsg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tMsg;
     }
 }

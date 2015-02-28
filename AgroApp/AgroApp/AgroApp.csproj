@@ -98,8 +98,9 @@
     </Content>
     <Content Include="App_Data\OutlookMenuTop.xml" />
     <Content Include="Calendar.aspx" />
+    <Content Include="vistas\administracion\Proveedores.aspx" />
     <Content Include="images\Fondo-AgroExport.png" />
-    <Content Include="vistas\Clients.aspx" />
+    <Content Include="vistas\administracion\Clients.aspx" />
     <Content Include="images\Logo-AgroExport_240x75.png" />
     <Content Include="Inicio.aspx" />
     <Content Include="Global.asax" />
@@ -187,12 +188,19 @@
     <Compile Include="Calendar.aspx.designer.cs">
       <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="clases\Destinos.cs" />
-    <Compile Include="vistas\Clients.aspx.cs">
+    <Compile Include="clases\DestinosCliente.cs" />
+    <Compile Include="vistas\administracion\Proveedores.aspx.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\administracion\Proveedores.aspx.designer.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\administracion\Clients.aspx.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vistas\Clients.aspx.designer.cs">
+    <Compile Include="vistas\administracion\Clients.aspx.designer.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">

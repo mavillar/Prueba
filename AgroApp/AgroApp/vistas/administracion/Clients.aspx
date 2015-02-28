@@ -23,35 +23,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
-     <dx:ASPxPopupControl runat="server" ID="clientePopUp" ClientInstanceName="clientePopUp"
-                            PopupHorizontalAlign="Center"
-                            PopupVerticalAlign="Middle"
-                            LoadingPanelText="Cargando perfil de Cliente&amp;hellip;"
-                            HeaderText="Ficha de Cliente">
-         <ClientSideEvents Shown="function(s, e) {
-	
-}" />
-         <ContentCollection>
-            <dx:PopupControlContentControl runat="server">
-                <dx:ASPxCallbackPanel ID="fichaClienteCallbackPanel" ClientInstanceName="fichaClienteCallbackPanel"
-                                    runat="server" Width="500px" Height="500px" RenderMode="Table" ScrollBars="Auto">
-                    <PanelCollection>
-                        <dx:PanelContent runat="server">
-                        </dx:PanelContent>
-                    </PanelCollection>
-                </dx:ASPxCallbackPanel>
-            </dx:PopupControlContentControl>
-        </ContentCollection>
-    </dx:ASPxPopupControl>
-
     <dx:ASPxGridView ID="gridClientes" runat="server" 
                         AutoGenerateColumns="False" DataSourceID="ClientesDataSource" 
                         KeyFieldName="ID" Width="100%" Caption="Listado de Clientes" 
                         ClientInstanceName="grid" 
                         OnRowInserting="gridClientes_RowInserting" 
-                        OnDetailRowExpandedChanged="gridClientes_DetailRowExpandedChanged" 
-                        OnInitNewRow="gridClientes_InitNewRow" 
-                        OnStartRowEditing="gridClientes_StartRowEditing">
+                        OnInitNewRow="gridClientes_InitNewRow">
 
         <Columns>
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="1">
@@ -112,7 +89,7 @@
         <Templates>
             <EditForm>
                 <div style="padding:5px">
-                    <dx:ASPxPageControl ID="UsuarioPageControl" runat="server" Width="100%" Theme="Office2010Blue" LoadingPanelText="Cargando datos&hellip;" Font-Bold="True" Font-Size="Small" ForeColor="#003366" ShowLoadingPanelImage="False" ShowLoadingPanel="False">
+                    <dx:ASPxPageControl ID="UsuarioPageControl" runat="server" Width="100%" Theme="Office2010Blue" LoadingPanelText="Cargando datos&hellip;" Font-Bold="True" Font-Size="Small" ForeColor="#003366" ShowLoadingPanelImage="False" ShowLoadingPanel="False" ActiveTabIndex="2">
                         <TabPages>
                             <dx:TabPage Text="Información Básica">
                                 <ContentCollection>
@@ -139,36 +116,92 @@
                             </dx:TabPage>
                             <dx:TabPage Text="Dirección de Envío">
 
+                                <ContentCollection>
+                                    <dx:ContentControl runat="server">
+                                    </dx:ContentControl>
+                                </ContentCollection>
+
                             </dx:TabPage>
                             <dx:TabPage Text="Destinos Habituales">
                                 <ContentCollection>
                                     <dx:ContentControl>
-                                        <dx:ASPxGridView ID="ClientesEnviosGridView" runat="server" Width="250px">
-                                            <Columns>
+                                        <div style="float:left;">
+                                            <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Selecciona un Destin a Agregar"></dx:ASPxLabel>
+                                            <dx:ASPxComboBox ID="destinosCombo" runat="server"
+                                                             DataSourceID="DestinosDataSource"
+                                                             TextField="destino"
+                                                             SelectedIndex="0"
+                                                             ValueField="ID" ClientInstanceName="destinosCombo"></dx:ASPxComboBox>
+                                            <dx:ASPxButton ID="bNewDestino" runat="server" 
+                                                            Text="Agregar Destino" OnClick="bNewDestino_Click">
+                                            </dx:ASPxButton>
+                                        </div>
+                                        <div style="float:left;margin-left:20px">
+                                            <dx:ASPxGridView ID="destinosClienteGridView" runat="server" 
+                                                DataSourceID="DestinosClienteDataSource"
+                                                KeyFieldName="ID" EnableTheming="True" Theme="BlackGlass" ClientInstanceName="destinosClienteGridView">
 
-                                                <dx:GridViewCommandColumn   ShowClearFilterButton="True" 
-                                                                            ShowDeleteButton="True" 
-                                                                            ShowEditButton="True" 
-                                                                            ShowNewButtonInHeader="True" 
-                                                                            VisibleIndex="1">
+                                                <Columns>
+                                                <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" VisibleIndex="1">
                                                 </dx:GridViewCommandColumn>
-                                                <dx:GridViewDataComboBoxColumn  FieldName="destino" 
-                                                                                Caption="Destino" 
-                                                                                VisibleIndex="3"
-                                                            PropertiesComboBox-DataSourceID="DestinosDataSource" 
-                                                            PropertiesComboBox-TextField="destino"
-                                                            PropertiesComboBox-ValueField="ID">
+                                                <dx:GridViewDataTextColumn FieldName="destino" VisibleIndex="3" Caption="Destino" Width="200px">
+                                                </dx:GridViewDataTextColumn>
+                                                </Columns>
 
-                                                </dx:GridViewDataComboBoxColumn>
-                                            </Columns>
-                                        </dx:ASPxGridView>
+                                                <SettingsPager Visible="False">
+                                                </SettingsPager>
+                                                <SettingsDataSecurity AllowEdit="False" AllowInsert="False" />
+
+                                            </dx:ASPxGridView>
+                                            <asp:SqlDataSource ID="DestinosClienteDataSource" runat="server" 
+                                                                ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
+                                                                ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
+                                                                SelectCommand="SELECT dc.*, d.destino FROM AgroExport.destinos_cliente as dc INNER JOIN AgroExport.destinos as d ON d.ID=dc.destinoID WHERE dc.clienteID=@clienteID" 
+                                                                DeleteCommand="DELETE FROM AgroExport.destinos_cliente WHERE ID=@ID" 
+                                                                InsertCommand="INSERT INTO AgroExport.destinos_cliente (clienteID, destinoID) VALUES (@clienteID, @destinoID)">
+                                                    <DeleteParameters>
+                                                        <asp:Parameter Name="ID" />
+                                                    </DeleteParameters>
+                                                    <InsertParameters>
+                                                        <asp:Parameter Name="clienteID"    Type="Int64" DefaultValue="5" />
+                                                        <asp:ControlParameter Name="destinoID" ControlID="destinosCombo" PropertyName="SelectedItem.Value" />
+                                                    </InsertParameters>
+                                                    <SelectParameters>
+                                                        <asp:Parameter Name="clienteID"    Type="Int64" />
+                                                    </SelectParameters>
+                                                </asp:SqlDataSource>
+                                            <br />
+                                            <dx:ASPxCallbackPanel ID="DestinosCallbackPanel" runat="server" 
+                                                                LoadingPanelText="Actualizando...&amp;hellip;" 
+                                                                Width="200px">
+                                                <ClientSideEvents EndCallback="function(s, e) {
+	DestinosCallbackPanel.PerformCallback();
+}" />
+                                                <PanelCollection>
+                                                    <dx:PanelContent runat="server">
+                                                        <dx:ASPxTextBox ID="tCallBack" runat="server" Width="170px" ClientInstanceName="tCallBack">
+                                                        </dx:ASPxTextBox>
+                                                    </dx:PanelContent>
+                                                </PanelCollection>
+                                            </dx:ASPxCallbackPanel>
+                                        </div>
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
                             <dx:TabPage Text="Comisionistas">
 
+                                <ContentCollection>
+                                    <dx:ContentControl runat="server">
+                                    </dx:ContentControl>
+                                </ContentCollection>
+
                             </dx:TabPage>
                             <dx:TabPage Text="Otros">
+
+                                <ContentCollection>
+                                    <dx:ContentControl runat="server">
+                                    </dx:ContentControl>
+                                </ContentCollection>
 
                             </dx:TabPage>
                         </TabPages>
@@ -197,23 +230,7 @@
             <asp:Parameter Name="cp"        Type="String" />
         </InsertParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="EnviosDataSource" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
-                    ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
-                    SelectCommand="SELECT dc.*, d.destino FROM AgroExport.destinos_cliente as dc INNER JOIN AgroExport.destinos as d ON d.ID=dc.destinoID WHERE dc.clienteID=@clienteID" 
-                    DeleteCommand="DELETE FROM AgroExport.destinos_cliente WHERE ID=@ID" 
-                    InsertCommand="INSERT INTO AgroExport.destinos_cliente (clienteID, destinoID) VALUES (@clienteID, @destinoID)">
-        <DeleteParameters>
-            <asp:Parameter Name="ID" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="clienteID"    Type="Int64" />
-            <asp:Parameter Name="destinoID"    Type="Int16" />
-        </InsertParameters>
-        <SelectParameters>
-            <asp:Parameter Name="clienteID"    Type="Int64" />
-        </SelectParameters>
-    </asp:SqlDataSource>
+    
      <asp:SqlDataSource ID="DestinosDataSource" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
                     ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
@@ -222,4 +239,5 @@
      <br />
      <dx:ASPxTextBox ID="texto" runat="server" Width="170px">
      </dx:ASPxTextBox>
+    <asp:TextBox ID="tMsg" runat="server"></asp:TextBox>
     </asp:Content>
