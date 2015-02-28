@@ -6,5 +6,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="ASPxButton"></dx:ASPxButton>
     <dx:ASPxListBox ID="ASPxListBox1" runat="server" ValueType="System.String">
+        <dx:ASPxMemo runat="server" Height="71px" Width="170px"></dx:ASPxMemo>
     </dx:ASPxListBox>
 </asp:Content>
