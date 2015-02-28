@@ -30,7 +30,7 @@ namespace AgroApp
 
         protected void bNewDestino_Click(object sender, EventArgs e)
         {
-            DestinosClienteDataSource.Insert();
+            //DestinosClienteDataSource.Insert();
             texto.Text = "Insertando...";
         }
 
