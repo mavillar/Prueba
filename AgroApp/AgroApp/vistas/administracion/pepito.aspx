@@ -4,6 +4,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+    <asp:CheckBox ID="CheckBox1" runat="server" />
+    <asp:Button ID="Button1" runat="server" Text="Button" />
+    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="ASPxButton"></dx:ASPxButton>
     <dx:ASPxListBox ID="ASPxListBox1" runat="server" ValueType="System.String">
     </dx:ASPxListBox>
