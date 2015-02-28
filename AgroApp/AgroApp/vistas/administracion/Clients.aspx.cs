@@ -32,6 +32,7 @@ namespace AgroApp
         {
             //DestinosClienteDataSource.Insert();
             texto.Text = "Insertando...";
+            texto.Text = "jander Clander"
         }
 
     }
