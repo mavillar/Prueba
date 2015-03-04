@@ -67,14 +67,22 @@
                         
                         <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" FullscreenMode="True" Height="100%" Width="100%">
                             <Panes>
-                                <dx:SplitterPane Name="SubMenu" Size="20%">
+                                <dx:SplitterPane Name="LeftContent" Size="20%">
                                     <ContentCollection>
                                         <dx:SplitterContentControl runat="server">
                                             <dx:ASPxTreeView ID="ASPxTreeView1" runat="server">
                                                 <Nodes>
-                                                    <dx:TreeViewNode NavigateUrl="~/vistas/administracion/Clients.aspx" Text="Clientes">
+                                                    <dx:TreeViewNode Text="Datos Clientes">
                                                         <Image IconID="people_employee_16x16">
                                                         </Image>
+                                                        <Nodes>
+                                                            <dx:TreeViewNode NavigateUrl="~/vistas/administracion/Clientes.aspx" Text="Datos Básicos">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Lista Destinos" NavigateUrl="~/vistas/administracion/ListaDestinosCliente.aspx">
+                                                            </dx:TreeViewNode>
+                                                            <dx:TreeViewNode Text="Comisionistas Asociados">
+                                                            </dx:TreeViewNode>
+                                                        </Nodes>
                                                     </dx:TreeViewNode>
                                                     <dx:TreeViewNode Text="Proveedores" NavigateUrl="~/vistas/administracion/Proveedores.aspx">
                                                         <Image IconID="people_usergroup_16x16">
@@ -141,10 +149,12 @@
                                         </dx:SplitterContentControl>
                                     </ContentCollection>
                                 </dx:SplitterPane>
-                                <dx:SplitterPane Name="Contenido">
+                                <dx:SplitterPane Name="RightContent">
                                     <ContentCollection>
                                         <dx:SplitterContentControl runat="server">
-                                            <asp:ContentPlaceHolder ID="Content" runat="server" ></asp:ContentPlaceHolder>
+
+                                            <asp:ContentPlaceHolder ID="MainContent" runat="server" ></asp:ContentPlaceHolder>
+                                            
                                         </dx:SplitterContentControl>
                                     </ContentCollection>
                                 </dx:SplitterPane>
@@ -157,7 +167,6 @@
     </dx:ASPxSplitter>
 
     </form>
-    <%-- DXCOMMENT: Configure a data source for the application's top menu --%>
     <asp:XmlDataSource ID="OutlookMenuTop" runat="server" DataFile="~/App_Data/OutlookMenuTop.xml" XPath="/items/*"></asp:XmlDataSource>
 </body>
 </html>

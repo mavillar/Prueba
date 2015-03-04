@@ -98,6 +98,8 @@
     </Content>
     <Content Include="App_Data\OutlookMenuTop.xml" />
     <Content Include="Calendar.aspx" />
+    <Content Include="vistas\administracion\ListaDestinosCliente.aspx" />
+    <Content Include="vistas\administracion\Clientes.aspx" />
     <Content Include="vistas\administracion\Proveedores.aspx" />
     <Content Include="images\Fondo-AgroExport.png" />
     <Content Include="vistas\administracion\Clients.aspx" />
@@ -138,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
+    <Content Include="Admin.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,6 +184,13 @@
     <Compile Include="Account\RegisterSuccess.aspx.designer.cs">
       <DependentUpon>RegisterSuccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin.master.cs">
+      <DependentUpon>Admin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.master.designer.cs">
+      <DependentUpon>Admin.master</DependentUpon>
+    </Compile>
     <Compile Include="Calendar.aspx.cs">
       <DependentUpon>Calendar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -189,6 +199,20 @@
       <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="clases\DestinosCliente.cs" />
+    <Compile Include="vistas\administracion\ListaDestinosCliente.aspx.cs">
+      <DependentUpon>ListaDestinosCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\administracion\ListaDestinosCliente.aspx.designer.cs">
+      <DependentUpon>ListaDestinosCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\administracion\Clientes.aspx.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\administracion\Clientes.aspx.designer.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vistas\administracion\Proveedores.aspx.cs">
       <DependentUpon>Proveedores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

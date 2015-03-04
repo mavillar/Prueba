@@ -13,68 +13,87 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <dx:ASPxGridView ID="gridClientes" runat="server" 
                         AutoGenerateColumns="False" DataSourceID="ClientesDataSource" 
                         KeyFieldName="ID" Width="100%" Caption="Listado de Clientes" 
-                        ClientInstanceName="grid" 
-                        OnRowInserting="gridClientes_RowInserting" 
-                        OnInitNewRow="gridClientes_InitNewRow">
+                        ClientInstanceName="grid">
+
+        <ClientSideEvents RowClick="function (s, e) {s.StartEditRow(e.visibleIndex); }" />
 
         <Columns>
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="1">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn FieldName="nombre" VisibleIndex="3" Caption="Nombre">
+            <dx:GridViewDataTextColumn FieldName="nombre" VisibleIndex="4" Caption="Nombre">
                 <PropertiesTextEdit Width="270px" Style-BackColor="#ccffcc" Style-Border-BorderWidth="0px">
-                    <Style BackColor="#CCFFCC">
-                        <Border BorderWidth="0px"></Border>
-                    </Style>
-                </PropertiesTextEdit>
+                    
+<Style BackColor="#CCFFCC">
+                        
+<Border BorderWidth="0px"></Border>
+                    
+</Style>
+                
+</PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="cif" VisibleIndex="4">
+            <dx:GridViewDataTextColumn FieldName="cif" VisibleIndex="5">
                 <PropertiesTextEdit DisplayFormatString="c">
-                    <MaskSettings Mask="<A-Z>00.000.000" ErrorText="Formato para el CIF incorrecto." />
-                </PropertiesTextEdit>
+                    
+<MaskSettings Mask="<A-Z>00.000.000" ErrorText="Formato para el CIF incorrecto." />
+                
+</PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="tlf_fijo" VisibleIndex="5" Caption="Telefono Fijo">
+            <dx:GridViewDataTextColumn FieldName="tlf_fijo" VisibleIndex="6" Caption="Telefono Fijo">
                 <PropertiesTextEdit DisplayFormatString="c">
-                    <MaskSettings Mask="+00 (000) 000 000" />
-                </PropertiesTextEdit>
+                    
+<MaskSettings Mask="+00 (000) 000 000" />
+                
+</PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="movil_1" VisibleIndex="7">
+            <dx:GridViewDataTextColumn FieldName="movil_1" VisibleIndex="8">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="pais" VisibleIndex="16">
+            <dx:GridViewDataTextColumn FieldName="pais" VisibleIndex="17">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="contacto" VisibleIndex="21">
+            <dx:GridViewDataTextColumn FieldName="contacto" VisibleIndex="22">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Ver" VisibleIndex="27">
+            <dx:GridViewDataTextColumn Caption="Ver" VisibleIndex="28">
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnClienteDetalle(this, '<%# Container.KeyValue %>')">
                         Ver Detalles...
                     </a>
                 </DataItemTemplate>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Código Postal" FieldName="cp" Visible="False" VisibleIndex="22">
+            <dx:GridViewDataTextColumn Caption="Código Postal" FieldName="cp" Visible="False" VisibleIndex="23">
                 <PropertiesTextEdit DisplayFormatString="c">
-                    <MaskSettings Mask="00000" ErrorText="Formato de Código Postal no válido." />
-                </PropertiesTextEdit>
+                    
+<MaskSettings Mask="00000" ErrorText="Formato de Código Postal no válido." />
+                
+</PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn Caption="Fax" FieldName="fax" Visible="False" VisibleIndex="0">
+                <PropertiesTextEdit Width="250px" Style-BackColor="#FFFFFF" Style-Border-BorderWidth="0px"></PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Dirección Web" FieldName="web" Visible="False" VisibleIndex="23">
+            <dx:GridViewDataTextColumn Caption="Dirección Web" FieldName="web" Visible="False" VisibleIndex="24">
+                <PropertiesTextEdit Width="250px" Style-BackColor="#FFFFFF" Style-Border-BorderWidth="0px"></PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Dirección" FieldName="direccion" Visible="False" VisibleIndex="24">
+            <dx:GridViewDataTextColumn Caption="Dirección" FieldName="direccion" Visible="False" VisibleIndex="25">
+                <PropertiesTextEdit Width="250px" Style-BackColor="#FFFFFF" Style-Border-BorderWidth="0px"></PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Ciudad" FieldName="ciudad" Visible="False" VisibleIndex="25">
+            <dx:GridViewDataTextColumn Caption="Ciudad" FieldName="ciudad" Visible="False" VisibleIndex="26">
+                <PropertiesTextEdit Width="250px" Style-BackColor="#FFFFFF" Style-Border-BorderWidth="0px"></PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Localidad" FieldName="localidad" Visible="False" VisibleIndex="26">
+            <dx:GridViewDataTextColumn Caption="Localidad" FieldName="localidad" Visible="False" VisibleIndex="27">
+                <PropertiesTextEdit Width="250px" Style-BackColor="#FFFFFF" Style-Border-BorderWidth="0px"></PropertiesTextEdit>
+            </dx:GridViewDataTextColumn>
+            
+            <dx:GridViewDataTextColumn Caption="ID" FieldName="ID" Name="ID" Visible="False" VisibleIndex="3">
             </dx:GridViewDataTextColumn>
             
         </Columns>
         <SettingsBehavior AllowSelectByRowClick="True" ColumnResizeMode="Control" ConfirmDelete="True" AllowFocusedRow="True" AllowSelectSingleRowOnly="True" />
         <SettingsPager AlwaysShowPager="True">
         </SettingsPager>
+        <SettingsEditing Mode="EditForm">
+        </SettingsEditing>
         <Settings ShowFilterRow="True" />
         <SettingsLoadingPanel Text="Cargando datos&amp;hellip;" />
         <Paddings Padding="0px" />
@@ -131,7 +150,8 @@
                                         <div style="float:left;margin-left:20px">
                                             <dx:ASPxGridView ID="destinosClienteGridView" runat="server" 
                                                 DataSourceID="DestinosClienteDataSource"
-                                                KeyFieldName="ID" EnableTheming="True" Theme="BlackGlass" ClientInstanceName="destinosClienteGridView">
+                                                KeyFieldName="ID" EnableTheming="True" Theme="DevEx" 
+                                                ClientInstanceName="destinosClienteGridView">
 
                                                 <Columns>
                                                 <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" VisibleIndex="1">
@@ -210,16 +230,18 @@
                     ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
                     SelectCommand="SELECT dc.*, d.destino FROM AgroExport.destinos_cliente as dc INNER JOIN AgroExport.destinos as d ON d.ID=dc.destinoID WHERE dc.clienteID=@clienteID" 
                     DeleteCommand="DELETE FROM AgroExport.destinos_cliente WHERE ID=@ID" 
-                    InsertCommand="INSERT INTO AgroExport.destinos_cliente (clienteID, destinoID) VALUES (@clienteID, @destinoID)">
+                    InsertCommand="INSERT INTO AgroExport.destinos_cliente (clienteID, destinoID) VALUES (@clienteID, @destinoID)" OnInserted="DestinosClienteDataSource_Inserted">
         <DeleteParameters>
             <asp:Parameter Name="ID" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:Parameter Name="clienteID"    Type="Int64" DefaultValue="5" />
-            <asp:ControlParameter Name="destinoID" ControlID="destinosCombo" PropertyName="SelectedValue" />
+            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int64" />
+            <asp:ControlParameter Name="destinoID"
+                                  ControlID="ctl00$MainSplitter$ASPxSplitter1$Content$gridClientes$DXPEForm$ef2$UsuarioPageControl$destinosCombo"
+                                  PropertyName="SelectedItem.Value" />
         </InsertParameters>
         <SelectParameters>
-            <asp:Parameter Name="clienteID"    Type="Int64" />
+            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int64" />
         </SelectParameters>
      </asp:SqlDataSource>
      <asp:SqlDataSource ID="DestinosDataSource" runat="server" 
@@ -227,8 +249,7 @@
                     ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
                     SelectCommand="SELECT * FROM AgroExport.destinos">
     </asp:SqlDataSource>
-     <br />
-     <dx:ASPxTextBox ID="texto" runat="server" Width="170px">
-     </dx:ASPxTextBox>
-    <asp:TextBox ID="tMsg" runat="server"></asp:TextBox>
-    </asp:Content>
+    <br />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="BottomContent" runat="server">
+</asp:Content>

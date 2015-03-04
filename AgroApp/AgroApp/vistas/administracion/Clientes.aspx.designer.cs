@@ -10,42 +10,33 @@
 namespace AgroApp {
     
     
-    public partial class Clients {
+    public partial class Formulario_web11 {
         
         /// <summary>
-        /// Control gridClientes.
+        /// Control clientesGridView.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridClientes;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView clientesGridView;
         
         /// <summary>
-        /// Control ClientesDataSource.
+        /// Control ge.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ClientesDataSource;
+        protected global::DevExpress.Web.ASPxGlobalEvents.ASPxGlobalEvents ge;
         
         /// <summary>
-        /// Control DestinosClienteDataSource.
+        /// Control UsuariosDataSource.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DestinosClienteDataSource;
-        
-        /// <summary>
-        /// Control DestinosDataSource.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DestinosDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource UsuariosDataSource;
     }
 }

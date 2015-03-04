@@ -1,4 +1,5 @@
 ﻿using AgroApp.clases;
+using DevExpress.Web.ASPxGridView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,27 +15,45 @@ namespace AgroApp
 
         protected void Page_Load(object sender, EventArgs e) {
 
-            
+            Session["clienteID"] = 125;
 
         }
 
         protected void gridClientes_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            texto.Text = "row inserting";
         }
 
         protected void gridClientes_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
-            texto.Text = "new row";
         }
 
         protected void bNewDestino_Click(object sender, EventArgs e)
         {
-            DestinosClienteDataSource.Insert();
-            texto.Text = "Insertando: ";
-            gridClientes.ShowFilterControl();
-
+            if (gridClientes.IsNewRowEditing)
+            {
+            }
+            else
+            {
+                try
+                {
+                    int val = gridClientes.EditingRowVisibleIndex;
+                    String dat = gridClientes.GetRowValues(val, "ID").ToString();
+                    Session["clienteID"] = Convert.ToInt64(dat);
+                    //texto.Text = "Insertando: " + Session["clienteID"]+ " -> "+dat;
+                    DestinosClienteDataSource.Insert();
+                    DestinosClienteDataSource.DataBind();
+                }
+                catch (Exception xc)
+                {
+                    
+                    //texto.Text = "Error:"+xc.ToString();
+                }                
+            }
         }
 
+        protected void DestinosClienteDataSource_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            //texto.Text = "Registro insertado...";
+        }
     }
 }

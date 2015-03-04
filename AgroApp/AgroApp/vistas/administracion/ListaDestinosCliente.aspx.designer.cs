@@ -10,25 +10,16 @@
 namespace AgroApp {
     
     
-    public partial class Clients {
+    public partial class Formulario_web12 {
         
         /// <summary>
-        /// Control gridClientes.
+        /// Control ASPxGridView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridClientes;
-        
-        /// <summary>
-        /// Control ClientesDataSource.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ClientesDataSource;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView ASPxGridView1;
         
         /// <summary>
         /// Control DestinosClienteDataSource.
@@ -47,5 +38,14 @@ namespace AgroApp {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource DestinosDataSource;
+        
+        /// <summary>
+        /// Control ClientesDataSource.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ClientesDataSource;
     }
 }

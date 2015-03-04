@@ -94,13 +94,13 @@ namespace AgroApp {
         protected global::DevExpress.Web.ASPxTreeView.ASPxTreeView ASPxTreeView1;
         
         /// <summary>
-        /// Control Content.
+        /// Control MainContent.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Content;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
         
         /// <summary>
         /// Control OutlookMenuTop.
