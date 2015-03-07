@@ -60,16 +60,33 @@ alert('Last Key = ' + key);
         <SettingsBehavior AllowSelectByRowClick="True" ConfirmDelete="True" />
         <Settings ShowFilterRow="True" />
         <SettingsDetail ShowDetailRow="True" />
+        <SettingsCommandButton>
+            <NewButton ButtonType="Image">
+                <Image IconID="mail_newcontact_32x32">
+                </Image>
+            </NewButton>
+        </SettingsCommandButton>
         <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
         <Templates>
             <DetailRow>
-                <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False" DataSourceID="DestinosClienteDataSource" OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect">
+                <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False"
+                        DataSourceID="DestinosClienteDataSource"
+                        OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect"
+                        KeyFieldName="ID">
                     <Columns>
-                        <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="0" Width="50px">
+                        <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="1" Width="50px" ShowNewButtonInHeader="True">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn Caption="Destino" FieldName="destino" VisibleIndex="1" Width="250px">
-                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataComboBoxColumn Caption="Añadir Destino a Cliente" FieldName="destino" VisibleIndex="2" Width="250px">
+                            <PropertiesComboBox DataSourceID="DestinosDataSource" TextField="destino" ValueField="ID">
+                            </PropertiesComboBox>
+                        </dx:GridViewDataComboBoxColumn>
                     </Columns>
+                    <SettingsCommandButton>
+                        <NewButton ButtonType="Image">
+                            <Image IconID="mail_newcontact_16x16">
+                            </Image>
+                        </NewButton>
+                    </SettingsCommandButton>
                     <SettingsDataSecurity AllowEdit="False" />
                 </dx:ASPxGridView>
             </DetailRow>
@@ -85,8 +102,13 @@ alert('Last Key = ' + key);
     <asp:SqlDataSource ID="DestinosClienteDataSource" runat="server"
             ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
             ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>"
+            InsertCommand="INSERT INTO AgroExport.destinos_cliente (clienteID, destinoID) VALUES ($clienteID, $destinoID)"
             SelectCommand="SELECT dc.*, d.destino FROM AgroExport.destinos_cliente as dc INNER JOIN AgroExport.destinos as d ON d.ID=dc.destinoID WHERE dc.clienteID=@clienteID">
 
+        <InsertParameters>
+            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int64" />
+            <asp:FormParameter FormField="ID" Name="destinoID" Type="Int16" />
+        </InsertParameters>
         <SelectParameters>
             <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int64" />
         </SelectParameters>

@@ -12,7 +12,6 @@ namespace AgroApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["clienteID"] = 126;
         }
 
         protected void ASPxGridView2_BeforePerformDataSelect(object sender, EventArgs e)

@@ -98,9 +98,10 @@
     </Content>
     <Content Include="App_Data\OutlookMenuTop.xml" />
     <Content Include="Calendar.aspx" />
+    <Content Include="vistas\administracion\Proveedores.aspx" />
     <Content Include="vistas\administracion\ListaDestinosCliente.aspx" />
     <Content Include="vistas\administracion\Clientes.aspx" />
-    <Content Include="vistas\administracion\Proveedores.aspx" />
+    <Content Include="vistas\administracion\Ejemplos.aspx" />
     <Content Include="images\Fondo-AgroExport.png" />
     <Content Include="vistas\administracion\Clients.aspx" />
     <Content Include="images\Logo-AgroExport_240x75.png" />
@@ -199,6 +200,18 @@
       <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="clases\DestinosCliente.cs" />
+    <Compile Include="vistas\administracion\Proveedores.aspx.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\administracion\Proveedores.aspx.designer.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="vistas\administracion\ListaDestinosCliente.aspx.cs">
       <DependentUpon>ListaDestinosCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,12 +226,12 @@
     <Compile Include="vistas\administracion\Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="vistas\administracion\Proveedores.aspx.cs">
-      <DependentUpon>Proveedores.aspx</DependentUpon>
+    <Compile Include="vistas\administracion\Ejemplos.aspx.cs">
+      <DependentUpon>Ejemplos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vistas\administracion\Proveedores.aspx.designer.cs">
-      <DependentUpon>Proveedores.aspx</DependentUpon>
+    <Compile Include="vistas\administracion\Ejemplos.aspx.designer.cs">
+      <DependentUpon>Ejemplos.aspx</DependentUpon>
     </Compile>
     <Compile Include="vistas\administracion\Clients.aspx.cs">
       <DependentUpon>Clients.aspx</DependentUpon>
@@ -262,6 +275,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

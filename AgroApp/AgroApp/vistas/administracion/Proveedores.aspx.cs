@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Web.ASPxGridView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,36 +8,22 @@ using System.Web.UI.WebControls;
 
 namespace AgroApp
 {
-    public partial class Formulario_web1 : System.Web.UI.Page
+    public partial class Formulario_web13 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
-        protected void ASPxButton1_Click(object sender, EventArgs e)
+        protected void ASPxGridView1_BeforePerformDataSelect(object sender, EventArgs e)
         {
-            try
-            {
-                SqlDataSource1.Insert();
-            }
-            catch (Exception exc)
-            {
-                lMsg.Text = "No se ha podido insertar el nuevo usuario, sosio!";
-            }
-            
+            Session["proveedorID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
         }
 
-        protected void SqlDataSource1_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        protected void ASPxGridView1_BeforePerformDataSelect1(object sender, EventArgs e)
         {
-            lMsg.Text = "listo...";
-            GridView1.DataBind();
-            msg.Text = "Barbaro!";
+            Session["proveedorID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
         }
 
-        protected void bSend_Click(object sender, EventArgs e)
-        {
-            lMsg.Text = "El titulo...";
-        }
+
     }
 }
