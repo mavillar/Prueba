@@ -97,8 +97,10 @@
       <DependentUpon>Data.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\OutlookMenuTop.xml" />
+    <Content Include="App_Data\XMLClasesComerciales.xml" />
     <Content Include="App_Data\XMLTipoTelefonos.xml" />
     <Content Include="Calendar.aspx" />
+    <Content Include="vistas\administracion\Comerciales.aspx" />
     <Content Include="images\palet_100.png" />
     <Content Include="images\palet_80.png" />
     <Content Include="images\palet_90.png" />
@@ -204,6 +206,13 @@
       <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="clases\DestinosCliente.cs" />
+    <Compile Include="vistas\administracion\Comerciales.aspx.cs">
+      <DependentUpon>Comerciales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\administracion\Comerciales.aspx.designer.cs">
+      <DependentUpon>Comerciales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vistas\administracion\Proveedores.aspx.cs">
       <DependentUpon>Proveedores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

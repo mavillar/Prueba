@@ -80,7 +80,7 @@
                                                         <Image IconID="people_usergroup_16x16">
                                                         </Image>
                                                     </dx:TreeViewNode>
-                                                    <dx:TreeViewNode Text="Comerciales">
+                                                    <dx:TreeViewNode Text="Comerciales" NavigateUrl="~/vistas/administracion/Comerciales.aspx">
                                                         <Image IconID="people_usergroup_16x16">
                                                         </Image>
                                                     </dx:TreeViewNode>
