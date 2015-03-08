@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tipos>
+  <item ID="0" tipo="Telefono Fijo"></item>
+  <item ID="1" tipo="Telefono Móvil"></item>
+</tipos>

@@ -24,6 +24,11 @@ namespace AgroApp
             Session["proveedorID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
         }
 
+        protected void ProveedoresGridView_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            Session["proveedorID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
+        }
+
 
     }
 }

@@ -3,6 +3,9 @@
 <%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGlobalEvents" tagprefix="dx" %>
 
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxClasses" tagprefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 <script type="text/javascript">
     function OnControlsInitializated(s, e) {
@@ -31,7 +34,7 @@
                      ClientInstanceName="clientesGridView"
                      DataSourceID="UsuariosDataSource" 
                      KeyFieldName="ID"
-                     Width="100%" OnCustomErrorText="clientesGridView_CustomErrorText">
+                     Width="100%" OnCustomErrorText="clientesGridView_CustomErrorText" Caption="TABLA DE CLIENTES">
         <Columns>
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0">
             </dx:GridViewCommandColumn>
@@ -171,10 +174,11 @@
             </dx:GridViewDataMemoColumn>
         </Columns>
         <SettingsBehavior AllowFocusedRow="True" AllowSelectByRowClick="True" />
-        <Settings ShowFilterRow="True" ShowGroupPanel="True" VerticalScrollableHeight="500" VerticalScrollBarMode="Auto" />
+        <Settings ShowFilterRow="True" VerticalScrollableHeight="500" VerticalScrollBarMode="Auto" />
         <SettingsLoadingPanel Text="Cargando Tabla de Clientes...&amp;hellip;" />
-        <SettingsPager PageSize="25" />
+        <SettingsPager PageSize="25" Visible="False" />
         <ClientSideEvents Init="OnInit" EndCallback="OnEndCallBack" />
+        <SettingsDetail AllowOnlyOneMasterRowExpanded="True" ShowDetailRow="True" />
         <SettingsCommandButton>
             <NewButton Text="Nuevo">
             </NewButton>
@@ -187,6 +191,184 @@
                 </Image>
             </DeleteButton>
         </SettingsCommandButton>
+        <Templates>
+            <DetailRow>
+                <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
+                    <TabPages>
+                        <dx:TabPage Text="Telefonos Fijos y Móviles">
+                            <TabImage IconID="chart_chartsrotate_16x16">
+                            </TabImage>
+                            <ContentCollection>
+                                <dx:ContentControl runat="server">
+                                    <dx:ASPxGridView ID="TelefonosGridView" runat="server" AutoGenerateColumns="False" 
+                                            DataSourceID="TelefonosClientesDataSource" KeyFieldName="ID" Width="100%" 
+                                            OnBeforePerformDataSelect="TelefonosGridView_BeforePerformDataSelect">
+                                        <Columns>
+                                            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" Width="15%">
+                                            </dx:GridViewCommandColumn>
+                                            <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
+                                                <EditFormSettings Visible="False" />
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn FieldName="clienteID" ShowInCustomizationForm="True" Visible="False" VisibleIndex="2">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn Caption="Nº de Telefono" FieldName="movil" ShowInCustomizationForm="True" VisibleIndex="3" Width="20%">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataComboBoxColumn Caption="Tipo Telefono" FieldName="tipo" ShowInCustomizationForm="True" VisibleIndex="4" Width="20%">
+                                                <PropertiesComboBox DataSourceID="XMLTipoTelefonosDataSource" DisplayFormatString="g" TextField="tipo" ValueField="ID">
+                                                </PropertiesComboBox>
+                                            </dx:GridViewDataComboBoxColumn>
+                                            <dx:GridViewDataMemoColumn Caption="Notas" FieldName="notas" ShowInCustomizationForm="True" VisibleIndex="5" Width="45%">
+                                            </dx:GridViewDataMemoColumn>
+                                        </Columns>
+                                        <SettingsPager Visible="False">
+                                        </SettingsPager>
+                                        <SettingsDataSecurity AllowEdit="False" />
+                                    </dx:ASPxGridView>
+                                    
+                                </dx:ContentControl>
+                            </ContentCollection>
+                        </dx:TabPage>
+                        <dx:TabPage Text="Emails">
+                            <TabImage IconID="mail_mail_16x16">
+                            </TabImage>
+                            <ContentCollection>
+                                <dx:ContentControl runat="server">
+                                    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="EmailsDataSource" KeyFieldName="ID" OnBeforePerformDataSelect="ASPxGridView1_BeforePerformDataSelect" Width="100%">
+                                        <Columns>
+                                            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="1" Width="15%">
+                                            </dx:GridViewCommandColumn>
+                                            <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="2">
+                                                <EditFormSettings Visible="False" />
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn FieldName="clienteID" ShowInCustomizationForm="True" Visible="False" VisibleIndex="3">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn Caption="Correo Electrónico" FieldName="email" ShowInCustomizationForm="True" VisibleIndex="4" Width="25%">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataCheckColumn FieldName="deleted" ShowInCustomizationForm="True" Visible="False" VisibleIndex="6">
+                                            </dx:GridViewDataCheckColumn>
+                                            <dx:GridViewDataMemoColumn Caption="Notas" FieldName="notas" ShowInCustomizationForm="True" VisibleIndex="5" Width="60%">
+                                            </dx:GridViewDataMemoColumn>
+                                        </Columns>
+                                        <SettingsPager Visible="False">
+                                        </SettingsPager>
+                                        <SettingsDataSecurity AllowEdit="False" />
+                                    </dx:ASPxGridView>
+                                </dx:ContentControl>
+                            </ContentCollection>
+                        </dx:TabPage>
+                        <dx:TabPage Text="Opciones de Envío">
+                            <TabImage IconID="mail_send_16x16">
+                            </TabImage>
+                            <ContentCollection>
+                                <dx:ContentControl runat="server">
+                                    <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False" 
+                                        DataSourceID="OpcionesEnvioDataSource"
+                                        KeyFieldName="ID" Width="100%" OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect">
+                                        <Columns>
+                                            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" Width="15%">
+                                            </dx:GridViewCommandColumn>
+                                            <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
+                                                <EditFormSettings Visible="False" />
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn FieldName="destinoID" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="2">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn FieldName="tipo_paletID" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="3">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataComboBoxColumn Caption="Destino" FieldName="destino" ShowInCustomizationForm="True" Width="20%" VisibleIndex="7">
+                                                <PropertiesComboBox DataSourceID="DestinosDataSource" TextField="destino" ValueField="ID">
+                                                </PropertiesComboBox>
+                                            </dx:GridViewDataComboBoxColumn>
+                                            <dx:GridViewDataComboBoxColumn Caption="Tipo de Palet" ShowInCustomizationForm="True" VisibleIndex="8" Width="20%" FieldName="tipo">
+                                                <PropertiesComboBox DataSourceID="TipoPaletDataSource" TextField="tipo" ValueField="ID">
+                                                </PropertiesComboBox>
+                                            </dx:GridViewDataComboBoxColumn>
+                                            <dx:GridViewDataMemoColumn Caption="Notas" FieldName="notas" ShowInCustomizationForm="True" VisibleIndex="9" Width="45%">
+                                            </dx:GridViewDataMemoColumn>
+                                        </Columns>
+                                        <SettingsPager Visible="False">
+                                        </SettingsPager>
+                                        <SettingsDataSecurity AllowEdit="False" />
+                                    </dx:ASPxGridView>
+                                    <asp:SqlDataSource ID="OpcionesEnvioDataSource" runat="server" 
+                                            ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
+                                            ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>"
+                                            SelectCommand="SELECT coe.*, d.destino, tp.tipo
+                                FROM AgroExport.clientes_opciones_envio as coe LEFT JOIN AgroExport.destinos as d ON d.ID=coe.destinoID LEFT JOIN AgroExport.tipo_palet as tp ON tp.ID=coe.tipo_paletID
+                                WHERE coe.clienteID=@clienteID AND coe.deleted=0"
+                                            InsertCommand="INSERT INTO AgroExport.clientes_opciones_envio (clienteID, destinoID, tipo_paletID, notas) VALUES (?, ?, ?, ?)"
+                                            DeleteCommand="UPDATE AgroExport.clientes_opciones_envio SET deleted=1 WHERE ID=@ID">
+
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+                                        </SelectParameters>
+                                        <InsertParameters>
+                                            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+                                            <asp:Parameter Name="destino" Type="Int16" />
+                                            <asp:Parameter Name="tipo" Type="Int16" />
+                                            <asp:Parameter Name="notas" Type="String" />
+                                        </InsertParameters>
+                                    </asp:SqlDataSource>
+                                </dx:ContentControl>
+                            </ContentCollection>
+                        </dx:TabPage>
+                        <dx:TabPage Text="Comisionistas">
+                            <TabImage IconID="people_usergroup_16x16">
+                            </TabImage>
+                            <ContentCollection>
+                                <dx:ContentControl runat="server">
+                                    <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" 
+                                            DataSourceID="ComisionistasClienteDataSource" 
+                                            KeyFieldName="ID" Width="100%">
+                                        <Columns>
+                                            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" Width="20%">
+                                            </dx:GridViewCommandColumn>
+                                            <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
+                                                <EditFormSettings Visible="False" />
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn FieldName="clienteID" ShowInCustomizationForm="True" Visible="False" VisibleIndex="2">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn FieldName="comisionistaID" ShowInCustomizationForm="True" Visible="False" VisibleIndex="3">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataCheckColumn FieldName="deleted" ShowInCustomizationForm="True" Visible="False" VisibleIndex="4">
+                                            </dx:GridViewDataCheckColumn>
+                                            <dx:GridViewDataMemoColumn Caption="Notas" FieldName="notas" ShowInCustomizationForm="True" VisibleIndex="7" Width="50%">
+                                            </dx:GridViewDataMemoColumn>
+                                            <dx:GridViewDataComboBoxColumn Caption="Nombre del Comisionista" FieldName="nombre" ShowInCustomizationForm="True" VisibleIndex="6" Width="30%">
+                                                <PropertiesComboBox DataSourceID="ComisionistasDataSource" TextField="nombre" ValueField="ID">
+                                                </PropertiesComboBox>
+                                            </dx:GridViewDataComboBoxColumn>
+                                        </Columns>
+                                        <SettingsPager Visible="False">
+                                        </SettingsPager>
+                                        <SettingsDataSecurity AllowEdit="False" />
+                                    </dx:ASPxGridView>
+                                    <asp:SqlDataSource ID="ComisionistasClienteDataSource" runat="server" 
+                                            ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>" 
+                                            ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
+                                            SelectCommand="SELECT cc.*, CONCAT(c.nombre, &quot; &quot;, c.apellidos) as nombre 
+FROM AgroExport.clientes_comisionistas as cc LEFT JOIN AgroExport.comisionistas as c ON c.ID=cc.comisionistaID
+WHERE cc.clienteID=@clienteID AND cc.deleted=0"
+                                            InsertCommand="INSERT INTO AgroExport.clientes_comisionistas (clienteID, comisionistaID, notas)
+                                        VALUES (?, ?, ?)"
+                                            DeleteCommand="UPDATE AgroExport.clientes_comisionistas SET deleted=1 WHERE ID=@ID">
+
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+                                        </SelectParameters>
+                                        <InsertParameters>
+                                            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+                                            <asp:Parameter Name="nombre" Type="Int16" />
+                                            <asp:Parameter Name="notas" Type="String" />
+                                        </InsertParameters>
+
+                                    </asp:SqlDataSource>
+                                </dx:ContentControl>
+                            </ContentCollection>
+                        </dx:TabPage>
+                    </TabPages>
+                </dx:ASPxPageControl>
+            </DetailRow>
+        </Templates>
     </dx:ASPxGridView>
     <dx:ASPxGlobalEvents ID="ge" runat="server">
         <ClientSideEvents ControlsInitialized="OnControlsInitializated" />
@@ -255,6 +437,51 @@
             <asp:FormParameter Name="iva" Type="String" FormField="iva" />
             <asp:FormParameter Name="hasIVA" Type="Boolean" FormField="hasIVA" />
         </InsertParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="TelefonosClientesDataSource" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>" 
+            ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
+            SelectCommand="SELECT * FROM AgroExport.clientes_moviles WHERE clienteID=@clienteID AND deleted=0"
+            InsertCommand="INSERT INTO AgroExport.clientes_moviles (clienteID, movil, tipo, notas) VALUES (?, ?, ?, ?)"
+            DeleteCommand="UPDATE AgroExport.clientes_moviles SET deleted=1 WHERE ID=@ID">
+
+        <SelectParameters>
+            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+        </SelectParameters>
+        <InsertParameters>
+            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+            <asp:Parameter Name="movil" Type="String" />
+            <asp:Parameter Name="tipo" Type="Int16" />
+            <asp:Parameter Name="notas" Type="String" />
+        </InsertParameters>
 
     </asp:SqlDataSource>
+    <asp:SqlDataSource ID="EmailsDataSource" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>"
+            ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
+            SelectCommand="SELECT * FROM AgroExport.clientes_emails WHERE clienteID=@clienteID AND deleted=0"
+            InsertCommand="INSERT INTO AgroExport.clientes_emails (clienteID, email, notas) VALUES (?, ?, ?)"
+            DeleteCommand="UPDATE AgroExport.clientes_emails SET deleted=1 WHERE ID=@ID">
+
+        <SelectParameters>
+            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+        </SelectParameters>
+        <InsertParameters>
+            <asp:SessionParameter Name="clienteID" SessionField="clienteID" Type="Int16" />
+            <asp:Parameter Name="email" Type="String" />
+            <asp:Parameter Name="notas" Type="String" />
+        </InsertParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="DestinosDataSource" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>" 
+                ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
+                SelectCommand="SELECT ID, destino FROM AgroExport.destinos WHERE deleted=0"></asp:SqlDataSource>
+    <br />
+    <asp:SqlDataSource ID="ComisionistasDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>" ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" SelectCommand="SELECT ID, CONCAT(nombre, &quot; &quot;, apellidos) as nombre FROM AgroExport.comisionistas WHERE deleted=0"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="TipoPaletDataSource" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:AgroExportConnectionString %>" 
+                ProviderName="<%$ ConnectionStrings:AgroExportConnectionString.ProviderName %>" 
+                SelectCommand="SELECT * FROM AgroExport.tipo_palet WHERE deleted=0"></asp:SqlDataSource>
+
+    <asp:XmlDataSource ID="XMLTipoTelefonosDataSource" runat="server" DataFile="~/App_Data/XMLTipoTelefonos.xml" XPath="tipos/item"></asp:XmlDataSource>
 </asp:Content>

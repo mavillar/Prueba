@@ -97,7 +97,11 @@
       <DependentUpon>Data.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\OutlookMenuTop.xml" />
+    <Content Include="App_Data\XMLTipoTelefonos.xml" />
     <Content Include="Calendar.aspx" />
+    <Content Include="images\palet_100.png" />
+    <Content Include="images\palet_80.png" />
+    <Content Include="images\palet_90.png" />
     <Content Include="vistas\administracion\Proveedores.aspx" />
     <Content Include="vistas\administracion\ListaDestinosCliente.aspx" />
     <Content Include="vistas\administracion\Clientes.aspx" />
