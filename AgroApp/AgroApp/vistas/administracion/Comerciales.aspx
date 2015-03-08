@@ -1,10 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.Master" AutoEventWireup="true" CodeBehind="Comerciales.aspx.cs" Inherits="AgroApp.Formulario_web14" %>
 <%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGlobalEvents" tagprefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ComercialesDataSource" KeyFieldName="ID" Width="100%" Caption="TABLA DE COMISIONISTAS">
+<script type="text/javascript">
+    function OnControlsInitializated(s, e) {
+        ASPxClientUtils.AttachEventToElement(window, "resize", function (e) {
+            AdjustSize();
+        });
+    }
+
+    function OnInit(s, e) {
+        AdjustSize();
+    }
+
+    function OnEndCallBack(s, e) {
+        AdjustSize();
+    }
+
+    function AdjustSize() {
+        var height = Math.max(0, document.documentElement.clientHeight);
+        ComercialesGridView.SetHeight(height-100);
+    }
+
+</script>
+    <dx:ASPxGridView ID="ComercialesGridView" runat="server" AutoGenerateColumns="False" 
+            DataSourceID="ComercialesDataSource" 
+            KeyFieldName="ID" Width="100%" 
+            Caption="TABLA DE COMERCIALES" 
+            ClientInstanceName="ComercialesGridView" Theme="Glass">
         <Columns>
             <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" Caption="Acciones" ShowClearFilterButton="True" Width="10%">
             </dx:GridViewCommandColumn>
@@ -26,9 +53,9 @@
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
         </Columns>
-        <SettingsPager Visible="False">
-        </SettingsPager>
-        <Settings ShowFilterRow="True" />
+        <ClientSideEvents Init="OnInit" EndCallback="OnEndCallBack" />
+        <SettingsPager Visible="False" Mode="ShowAllRecords" />
+        <Settings ShowFilterRow="True" VerticalScrollableHeight="0" VerticalScrollBarMode="Auto" />
         <SettingsCommandButton>
             <EditButton ButtonType="Image">
                 <Image IconID="mail_editcontact_16x16">
@@ -65,5 +92,8 @@
         </InsertParameters>
 
     </asp:SqlDataSource>
+    <dx:ASPxGlobalEvents ID="ge" runat="server">
+        <ClientSideEvents ControlsInitialized="OnControlsInitializated" />
+    </dx:ASPxGlobalEvents>
     <asp:XmlDataSource ID="XmlComercialesDataSource" runat="server" DataFile="~/App_Data/XMLClasesComerciales.xml" XPath="clases/item"></asp:XmlDataSource>
 </asp:Content>
